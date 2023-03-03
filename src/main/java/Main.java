@@ -5,17 +5,40 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main {
 
-    public static void main(String[] args){
-        System.out.println("Guess a number.");
-        Scanner numScanner = new Scanner(System.in);
-        String guess = numScanner.next();
-        numScanner.close();
-        Random rand = new Random();
-        int randnum = rand.nextInt(100);
-        int numguess = Integer.parseInt(guess);
-        //String randString = randnum.toString();
-        int numGuess = 1;
 
+    public static void main(String[] args) {
+        Scanner numScanner = new Scanner(System.in);
+
+       //numScanner.close();
+        Random rand = new Random();
+        int randNum = rand.nextInt(100);
+        int guessCount = 0;
+        int guess = 0;
+
+        do {
+            System.out.println("Guess a number up to 100.");
+            guess = numScanner.nextInt();
+            guessCount++;
+            if (guess < randNum) {
+                System.out.println("You guessed too low");
+            } else if (guess > randNum) {
+                System.out.println("You guessed to high.");
+            } else {
+                System.out.println("Congrats! You guessed in " + guessCount + " attempts.");
+
+            }
+        } while (randNum != guess);
+    }
+}
+
+
+
+
+
+
+
+
+        /*
         for (int guessCounter = 1; numGuess != randnum;) {
             if (numGuess <= randnum) {
                 System.out.println("You guessed too low.");
@@ -34,8 +57,8 @@ public class Main {
         }
     }
 
+*/
 
-}
     /*
         Write a guessing game which prompts a user to guess a mystery number within some range.
         After every guess the program should display some variation of "too large", "too small", "correct guess", respectively.
