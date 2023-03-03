@@ -14,17 +14,24 @@ public class Main {
         int randNum = rand.nextInt(100);
         int guessCount = 0;
         int guess = 0;
+        int previous = -1;
 
         do {
             System.out.println("Guess a number up to 100.");
             guess = numScanner.nextInt();
             guessCount++;
-            if (guess < randNum) {
+            if (guess == previous) {
+                System.out.println("You guessed this already.");
+                guessCount--;
+            } else if  (guess < randNum) {
                 System.out.println("You guessed too low");
+                previous = guess;
             } else if (guess > randNum) {
                 System.out.println("You guessed to high.");
+                previous = guess;
             } else {
                 System.out.println("Congrats! You guessed in " + guessCount + " attempts.");
+
 
             }
         } while (randNum != guess);
